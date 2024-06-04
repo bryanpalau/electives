@@ -1,7 +1,9 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-const db = new sqlite3.Database(path.resolve(__dirname, '../../schema.db'));
+// Adjust the path as necessary to match the deployment environment
+const dbPath = path.resolve(__dirname, '..', '..', 'schema.db');
+const db = new sqlite3.Database(dbPath);
 
 exports.handler = async (event, context) => {
   const { studentId, electiveType } = event.queryStringParameters;

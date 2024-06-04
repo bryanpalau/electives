@@ -6,22 +6,22 @@ const dbPath = path.resolve(__dirname, '..', '..', 'schema.db');
 const db = new sqlite3.Database(dbPath);
 
 exports.handler = async (event, context) => {
-  const { studentId, courseId } = event.queryStringParameters;
+  const studentId = event.queryStringParameters.studentId;
 
   try {
-    const grade = await new Promise((resolve, reject) => {
-      db.get(`SELECT grade FROM grades WHERE student_id = ? AND course_id = ?`, [studentId, courseId], (err, row) => {
+    const takenCourses = await new Promise((resolve, reject) => {
+      db.all(`SELECT course_id, course_name, elective_type FROM taken_courses WHERE student_id = ?`, [studentId], (err, rows) => {
         if (err) return reject(err);
-        resolve(row ? row.grade : null);
+        resolve(rows);
       });
     });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ grade }),
+      body: JSON.stringify(takenCourses),
     };
   } catch (error) {
-    console.error('Error fetching grade:', error.message);
+    console.error('Error fetching taken courses:', error.message);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Internal Server Error' }),
