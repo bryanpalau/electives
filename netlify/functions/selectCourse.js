@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
       };
     }
 
-    const electiveTable = electiveType === 'elective_1' ? 'elective_1' : 'elective_2';
+    const electiveTable = electiveType; // Use the electiveType directly as the table name
 
     const course = await new Promise((resolve, reject) => {
       db.get(`SELECT required_grade FROM ${electiveTable} WHERE course_id = ?`, [courseId], (err, row) => {

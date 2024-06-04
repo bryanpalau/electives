@@ -7,7 +7,7 @@ const db = new sqlite3.Database(dbPath);
 
 exports.handler = async (event, context) => {
   const { studentId, electiveType } = event.queryStringParameters;
-  const electiveTable = electiveType === 'elective_1' ? 'elective_1' : 'elective_2';
+  const electiveTable = electiveType; // Use the electiveType directly as the table name
 
   try {
     const courses = await new Promise((resolve, reject) => {
