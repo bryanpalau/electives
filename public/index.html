@@ -70,9 +70,8 @@
                     fetch(`/api/students/${studentId}`)
                         .then(response => response.json())
                         .then(data => {
-                            console.log('Student ID verification response:', data); // Log response
                             if (data.exists) {
-                                alert('Success');
+                                alert('Student ID verified successfully.');
                                 verifyContainer.style.display = 'none';
                                 formContainer.classList.remove('hidden');
                                 navigationButtons.classList.remove('hidden');
@@ -90,8 +89,6 @@
             });
 
             function createForm(electiveType, courses, index) {
-                console.log(`Creating form for ${electiveType}`); // Log form creation
-
                 const form = document.createElement('form');
                 form.id = `form-${electiveType}`;
                 form.classList.add('hidden', 'bg-white', 'p-6', 'rounded', 'shadow-md', 'mb-6');
@@ -187,7 +184,6 @@
                 fetch(`/api/courses?studentId=${studentId}&electiveType=${electiveType}`)
                     .then(response => response.json())
                     .then(courses => {
-                        console.log(`Courses for ${electiveType}:`, courses);
                         createForm(electiveType, courses, index);
                     })
                     .catch(error => console.error('Error fetching courses:', error));

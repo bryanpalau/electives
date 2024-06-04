@@ -4,7 +4,7 @@ const path = require('path');
 const db = new sqlite3.Database(path.resolve(__dirname, '../../schema.db'));
 
 exports.handler = async (event, context) => {
-  const { id: studentId } = event.queryStringParameters;
+  const studentId = event.path.split('/').pop();
 
   try {
     const student = await new Promise((resolve, reject) => {
