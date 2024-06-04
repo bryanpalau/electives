@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
+// Adjust the path as necessary to match where Netlify functions can access the file
 const db = new sqlite3.Database(path.resolve(__dirname, '..', '..', 'schema.db'));
 
 exports.handler = async (event, context) => {
