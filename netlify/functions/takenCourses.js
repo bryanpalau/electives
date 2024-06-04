@@ -1,8 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-// Adjust the path as necessary to match the deployment environment
-const dbPath = path.resolve(__dirname, '..', '..', 'schema.db');
+// Adjust the path to ensure it's relative to the function's location
+const dbPath = path.resolve(__dirname, '../../schema.db');
 const db = new sqlite3.Database(dbPath);
 
 exports.handler = async (event, context) => {
