@@ -1,13 +1,12 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-// Adjust the path as necessary to match the deployment environment
-const dbPath = path.resolve(__dirname, '..', '..', 'schema.db');
+const dbPath = path.resolve(process.env.DB_PATH);
 const db = new sqlite3.Database(dbPath);
 
 exports.handler = async (event, context) => {
   const { studentId, electiveType } = event.queryStringParameters;
-  const electiveTable = electiveType; // Use the electiveType directly as the table name
+  const electiveTable = electiveType;
 
   try {
     const courses = await new Promise((resolve, reject) => {
