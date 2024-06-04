@@ -1,0 +1,16 @@
+
+{
+  "name": "electives",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'No build script needed for this project'"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "path": "^0.12.7"
+  }
+}
