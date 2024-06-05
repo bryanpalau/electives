@@ -5,7 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Course Selection</title>
   <style>
-    /* Add your styles here */
+    /* Add your original styles here */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    #courses-container, #select-course-container {
+      width: 50%;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 8px;
+      background: #f9f9f9;
+      margin-bottom: 5px;
+      border: 1px solid #ddd;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    label, input {
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #select-course-message {
+      margin-top: 10px;
+      color: green;
+    }
   </style>
 </head>
 <body>
